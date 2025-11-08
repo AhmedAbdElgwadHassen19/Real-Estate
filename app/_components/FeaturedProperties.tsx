@@ -8,7 +8,7 @@ import { ArrowBigRight } from 'lucide-react';
 import Link from 'next/link';
 
 export default function FeaturedProperties() {
-  const featuredProperties  = useQuery(api.properties.getFeatuedProperties)
+  const featuredProperties  = useQuery(api.properties.getFeaturedProperties)
      
   return (
     <div className='p-24 items-center mb-8 space-y-12'>

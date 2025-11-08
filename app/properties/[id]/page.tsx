@@ -20,11 +20,9 @@ import ScheduleViewing from '@/app/_components/ScheduleViewing'
 export default function PropertiesDetailPage({ params }: { params: any }) {
 
   const property = useQuery(api.properties.getProperty, {id: params.id as any } )
-    
-    const deleteProperty = useMutation(api.properties.deleteProperty)
-    const router = useRouter()
-    const [selectedImageIndex , setSelectedImageIndex] = useState(0)
-  
+  const deleteProperty = useMutation(api.properties.deleteProperty)
+  const router = useRouter()
+  const [selectedImageIndex , setSelectedImageIndex] = useState(0)
 
     const handleDelete = async ()=>{
       try{
@@ -39,11 +37,12 @@ export default function PropertiesDetailPage({ params }: { params: any }) {
   return (
     <div className='max-w-6xl mx-auto'>
       <div className="flex items-center justify-end gap-4 mt-10">
-        <Link href={`/properties/${property?._id}/edit`}>
-          <Button className='bg-gray-600'>Edit</Button>
-        </Link>
-        <Button onClick={handleDelete} className='bg-red-600'>Delete</Button>
+          <Link href={`/properties/${property?._id}/edit`}>
+            <Button className='bg-gray-600'>Edit</Button>
+          </Link>
+          <Button onClick={handleDelete} className='bg-red-600'>Delete</Button>
       </div>
+      
 
       {/* image Gallery */}
 

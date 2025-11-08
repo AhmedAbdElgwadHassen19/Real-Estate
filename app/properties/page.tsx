@@ -9,11 +9,11 @@ import {PropertyFilters as Filters} from "../types"
 import PropertyCard from '../_components/PropertyCard'
 import PropertyFilter from '../_components/PropertyFilter'
 import { useSearchParams } from 'next/navigation'
- function PropertiesPageContent () {
+
+function PropertiesPageContent () {
 
     const [filter , setFilter] = useState<Filters>({})
     const Properties  = useQuery(api.properties.getProperties, filter)
-    
 
   const searchParams = useSearchParams()
   const propertyType = searchParams.get("type")
@@ -30,7 +30,7 @@ import { useSearchParams } from 'next/navigation'
     return (
         <div className='p-24 items-center mb-8 space-y-12'>
           <h2>All Properties</h2>
-
+      
           <div className="flex items-center justify-end">
             <Link href="properties/new"> <Button> Add Property<ArrowBigRight/></Button> </Link>
           </div>

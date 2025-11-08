@@ -21,6 +21,7 @@ function PropertyForm({initialData, isEditing = false, propertyId}: PropertyForm
     const router = useRouter();
     const createProperty = useMutation(api.properties.createProperty)
     const updateProperty  = useMutation(api.properties.updateProperty)
+    
 
     const [formData, setFormData] = useState({
     title :initialData?.title || "",
@@ -129,16 +130,7 @@ function PropertyForm({initialData, isEditing = false, propertyId}: PropertyForm
 
                 <label className='block text-sm font-medium text-gray-700 mb-1'>Property Title *</label>
 
-                <input 
-             type="text"
-             name="title"
-             value={formData?.title}
-             onChange={handleInputChange}
-             required
-             className='w-full p-3 border border-gray-300 rounded'
-
-
-             />
+                <input type="text" name="title" value={formData?.title} onChange={handleInputChange} required className='w-full p-3 border border-gray-300 rounded'/>
 
 
             </div>
