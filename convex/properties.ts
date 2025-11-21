@@ -95,6 +95,11 @@ export const createProperty = mutation({
     featured: v.optional(v.boolean()),
     },
     handler:  async(ctx,args) => {
+      const user = await ctx.auth.getUserIdentity();
+      if (!user) {
+        throw new Error("Unauthorized");
+      }
+
         const propertyId = await ctx.db.insert("properties",{
       title: args.title,
       description: args.description,
@@ -121,8 +126,6 @@ export const createProperty = mutation({
 })
 
 
-
-// إضافة ownerId للعقارات القديمة
 
 
 // Update a property
@@ -157,6 +160,11 @@ export const updateProperty = mutation({
     featured: v.optional(v.boolean()),
     },
     handler:  async(ctx,args) => {
+      const user = await ctx.auth.getUserIdentity();
+      if (!user) {
+        throw new Error("Unauthorized");
+      }
+
       const {id, ...updates} = args;
       await ctx.db.patch(id, updates)       
       
@@ -170,7 +178,12 @@ export const updateProperty = mutation({
  export const deleteProperty = mutation({
     args: {id : v.id("properties")},
     handler: async (ctx, args)=> {
-         await ctx.db.delete(args.id);
+      const user = await ctx.auth.getUserIdentity();
+      if (!user) {
+        throw new Error("Unauthorized");
+      }
+
+      await ctx.db.delete(args.id);
     }
  })
 

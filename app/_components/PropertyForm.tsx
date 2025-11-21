@@ -7,6 +7,8 @@ import { Upload } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
+import { useUser } from '@clerk/nextjs'
+import Link from 'next/link'
 
 interface PropertyFormProps {
   initialData?: Partial<PropertyFormData>
@@ -19,6 +21,7 @@ function PropertyForm({ initialData, isEditing = false, propertyId }: PropertyFo
   const router = useRouter()
   const createProperty = useMutation(api.properties.createProperty)
   const updateProperty = useMutation(api.properties.updateProperty)
+  const {user} = useUser()
 
   const [formData, setFormData] = useState({
     title: initialData?.title || "",
@@ -314,9 +317,19 @@ function PropertyForm({ initialData, isEditing = false, propertyId }: PropertyFo
         </div>
       )}
 
-      <Button type="submit" className='mt-4 w-full md:w-auto mb-5'>
-        {isEditing ? "Update Property" : "Create Property"}
-      </Button>
+      {user ? (
+        <Button type="submit" className='mt-4 w-full md:w-auto mb-5'>
+          {isEditing ? "Update Property" : "Create Property"}
+        </Button>
+        ) : (
+        <Link href="/sign-in">
+          <Button className='mt-4 w-full md:w-auto mb-5 bg-blue-600'>
+            Sign in to continue
+          </Button>
+        </Link>
+      )}
+
+      
     </form>
   )
 }
