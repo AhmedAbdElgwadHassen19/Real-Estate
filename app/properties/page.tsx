@@ -28,8 +28,8 @@ function PropertiesPageContent () {
   },[propertyType])
 
     return (
-        <div className='p-24 items-center mb-8 space-y-12'>
-          <h2>All Properties</h2>
+        <div className='px-4 md:px-8 lg:px-24 items-center mb-8 space-y-12'>
+          <h2 className='mt-20 md:mt-25'>All Properties</h2>
       
           <div className="flex items-center justify-end">
             <Link href="properties/new"> <Button> Add Property<ArrowBigRight/></Button> </Link>
@@ -46,7 +46,7 @@ function PropertiesPageContent () {
           ):Properties.length === 0 ?(
             <div className="text-center py-12">
               <h3 className='text-lg font-semibold text-gray-600 mb-4'>No Properties yet </h3>
-              <Button>Add your property</Button>
+              
             </div>
           ):(
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

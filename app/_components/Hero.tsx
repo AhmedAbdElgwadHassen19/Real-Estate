@@ -1,10 +1,14 @@
+"use client"
 import { Button } from '@/components/ui/button'
+import { useUser } from '@clerk/nextjs'
+import { HeartPlus, Link } from 'lucide-react'
 import Image from 'next/image'
 import React from 'react'
 
 export default function Hero() {
+  const {user}= useUser()
   return (
-    <>
+    
     <div className="relative overflow-hidden w-full h-[750px]">
       <Image width={1200} height={1200}  src= "/hero.jpg" alt='hero' className=' object-cover  w-full h-[750px]' />
 
@@ -15,10 +19,15 @@ export default function Hero() {
           <h1 className='text-5xl md:text-7xl font-bold mb-2 text-white'>Welcome to this  <span className='block text-[#e04141] mt-2'>Real Key </span></h1>
 
           <p className='text-xl md:text-2xl mb-8 text-gray-200'> We provide innovative solutions and premium services to help you achieve your goals and succeed in the world of Real Estate</p>
-            <Button className='bg-[#e04141]'> Get Started Now</Button>
+          <Button className='bg-[#e04141] animate-bounce w-[100px]'>
+            {user ?(
+              <HeartPlus className="w-6 h-6" />
+            ):(<span> <a href='/sign-in' className="text-white font-semibold">Get Started</a></span>
+            )}
+          </Button>
         </div>
       </div>
     </div>
-    </>
+    
   )
 }

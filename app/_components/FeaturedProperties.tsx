@@ -11,7 +11,7 @@ export default function FeaturedProperties() {
   const featuredProperties  = useQuery(api.properties.getFeaturedProperties)
      
   return (
-    <div className='p-24 items-center mb-8 space-y-12'>
+    <div className='p-4 sm:p-8 md:p-16 lg:p-24 items-center mb-8 space-y-12'>
       <h2>FeaturedProperties</h2>
       {featuredProperties === undefined ? (
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>

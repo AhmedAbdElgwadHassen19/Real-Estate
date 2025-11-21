@@ -115,12 +115,12 @@ export default function ScheduleViewing({property} : ScheduleViewingProps) {
                     selected={selectedDate}
                     onSelect={setSelectedDate}
                     disabled={isDateDisabled}
-                    className="rounded-md border shadow-sm w-full"
+                    className="rounded-md border shadow-sm m-auto "
                     />
 
                     {/* Time Selection  */}
                     <div className="space-y-2">
-                        <div className="grig grid-cis-3 gap-2">
+                        <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 mt-3">
                             {availableTimes?.map((time) => (
                                 <Button key={time} type='button' onClick={()=> setSelectedTime(time)} 
                                 className = {`p-2 border rounded-lg  transition-colors  ${selectedTime === time ? 'bg-blue-600 text-white' : 'bg-white text-gray-800 hover:bg-gray-100'}`}>
@@ -143,7 +143,7 @@ export default function ScheduleViewing({property} : ScheduleViewingProps) {
                         <Textarea id='massage'  value={message} onChange={(e)=>setMessage(e.target.value)} ></Textarea>
                     </div>
 
-                    <Button type='submit' disabled={!selectedDate || !selectedTime}>{isSubmitting? "sending" : "Schedule Viewing"}  </Button>
+                    <Button type='submit'  disabled={!selectedDate || !selectedTime}>{isSubmitting? "sending" : "Schedule Viewing"}  </Button>
                     </form>
                 )}
             </DialogContent>

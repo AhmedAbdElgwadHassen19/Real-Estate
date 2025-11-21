@@ -4,8 +4,7 @@ import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { ConvexClientProvider  } from "./ConvexClientProvider";
 import ConnectUserConvex from "./ConnectUserConvex";
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
-import { AppSidebar } from "./_components/AppSidebar ";
+import Navbar from "./_components/Navbar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,16 +33,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <SidebarProvider>
-          <AppSidebar />
-            <main className="flex-1 relative">
-                <div className="fixed z-50 bg-white  w-[30px]">
-                  <SidebarTrigger/>
-                </div>
+          <Navbar />
+            
               <ConnectUserConvex />
               {children}
-            </main>
-        </SidebarProvider>
       </body>
     </html>
     </ClerkProvider>
