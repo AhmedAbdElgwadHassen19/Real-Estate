@@ -1,5 +1,3 @@
-
-
 // Get all properties with optional filters
 
 import { v } from "convex/values";
@@ -130,7 +128,6 @@ export const createProperty = mutation({
 
 // Update a property
 
-
 export const updateProperty = mutation({
     args:{
     id: v.id("properties"),    
@@ -196,6 +193,3 @@ export const updateProperty = mutation({
         return await ctx.db.query("properties").filter((q  )=> q.eq(q.field("featured"), true)).collect()
     }
  })
-
-
- 

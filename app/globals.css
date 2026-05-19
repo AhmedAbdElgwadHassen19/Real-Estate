@@ -42,21 +42,23 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
 }
-h2{
-    position: relative;
-    display: inline-block;
-    color: black;
-    font-size: 35px;
+@keyframes shrink {
+  from { width: 100%; }
+  to   { width: 0%; }
 }
 
-h2::before{
-    position: absolute;
-    content: "";
-    width: 50%;
-    height: 4px;
-    background-color: #e04141;
-    bottom: 0 ;
-    left: 0;
+@keyframes slide-in-from-bottom-4 {
+  from { transform: translateY(1rem); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.animate-in {
+  animation: slide-in-from-bottom-4 0.3s ease, fade-in 0.3s ease;
 }
 
 :root {
@@ -134,5 +136,17 @@ h2::before{
   }
   body {
     @apply bg-background text-foreground;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  /* Remove number input arrows */
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  input[type="number"] {
+    -moz-appearance: textfield;
   }
 }
